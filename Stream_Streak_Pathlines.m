@@ -39,7 +39,7 @@ z = 0:1:50;
 p = interp1(xxD,yyD,z,'makima');
 Strk = plot(z,p,'--m'); hold on
 plot(P0x(61), P0y(61),'*k', P1x(41), P1y(41), '*b', P2x(21), P2y(21), '*g', P3x(1), P3y(1), '*r')
-title('Streamlines and Streakline'), xlabel('x'), ylabel('y'), axis([0.5 46 0 0.5])
+title('Pathlines and Streakline'), xlabel('x'), ylabel('y'), axis([0.5 46 0 0.5])
 legend([P0, P1, P2, P3, Strk],{'t=0 Pathline','t=1 Pathline','t=2 Pathline','t=3 Pathline','Streakline'})
 
 function [X,Y] = pathline(T_start,runtime)
