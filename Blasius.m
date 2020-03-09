@@ -1,6 +1,7 @@
 % Solutions to Blasius Equation
 clear all; close all; clc 
 
+
 %% Parameters of Blasius Equation
 U_inf = 1;
 L = 10;
@@ -9,6 +10,7 @@ rho = 1.225;
 nu = mu/rho;
 A = sqrt(nu/U_inf);
 h = 0.01;
+
 
 %% Numerical Solution of Blasius Equation Using Runge-Kutta
 G1 = @(x, y1, y2, y3) y2;
@@ -29,6 +31,7 @@ for i = 1:(length(eta)-1)
     y1(i+1) = y1(i)+ 1/6*(a(1)+2*b(1)+2*c(1)+d(1));
 end
 
+
 %% Plotting and Visualization
 figure(1)
 plot(y1, eta, y2, eta, y3, eta, 'LineWidth', 2)
@@ -39,6 +42,7 @@ ylabel('\eta', 'FontSize', 20);
 grid on
 Legend1 = {'G(\eta)', 'G''(\eta)', 'G''''(\eta)'}; % G' = u/u_e
 legend(Legend1, 'FontSize', 14);
+
 
 %% Velocity Profile and the BL thickness distribution
 figure(2)
@@ -61,6 +65,7 @@ ylabel('y', 'FontSize', 20);
 ylim([0, max(y{j})])
 grid on
 
+
 %% Momentum Thickness Theta
 figure(3)
 hold all
@@ -77,6 +82,7 @@ xlabel('x', 'FontSize', 20);
 ylabel('y', 'FontSize', 20);
 ylim([0, max(y{j})])
 grid on
+
 
 %% Displacement Thickness delta*
 figure(4)
@@ -95,7 +101,8 @@ ylabel('y', 'FontSize', 20);
 ylim([0, max(y{j})])
 grid on
 
-%% shear stress at the wall as function of x
+
+%% Shear stress at the wall as function of x
 figure(5)
 for i = 1 : length(x)
     tau_x(i) = mu*U_inf*y3(1)*sqrt(U_inf/2/nu/x(i));
@@ -107,7 +114,8 @@ ylabel('\tau_w_a_l_l', 'FontSize', 20);
 axis tight
 grid on
 
-%% shear stress as function of eta at x = 1, 4, 5
+
+%% Shear stress as function of eta at x = 1, 4, 5
 figure(6)
 hold all
 for i = 1:length(position)
@@ -122,7 +130,7 @@ grid on
 Legend3 = {'\tau(\eta) at x = 1', '\tau(\eta) at x = 4', '\tau(\eta) at x = 5'};
 legend(Legend3, 'FontSize', 14);
 
-%% shear derivative as function of eta at x = 1, 4, 5
+%% Shear derivative as function of eta at x = 1, 4, 5
 figure(7)
 hold all
 y4 = -1/2*y1.*y3;
@@ -138,7 +146,8 @@ grid on
 Legend4 = {'\tau''(\eta) at x = 1', '\tau''(\eta) at x = 4', '\tau''(\eta) at x = 5'};
 legend(Legend4, 'FontSize', 14);
 
-%% local shear cofficient as a function of x
+
+%% Local shear cofficient as a function of x
 figure(8)
 hold all
 for i = 1: length(x)
@@ -152,6 +161,7 @@ ylabel('C_f_x', 'FontSize', 20);
 axis tight
 grid on
 
+
 %% Total Skin friction coefficient
 CF_T = 0;
 dx = x(2)-x(1);
@@ -159,6 +169,7 @@ for i = 2 : length(x)
     CF_T = CF_T + 1/L*cfx(i)*dx;
 end
 CDF_T = CF_T*2;
+
 
 %% Accumulative Drag Force as function of x
 CF = 0;
@@ -207,7 +218,8 @@ view([-146 11])
 ylim([0 3])
 zlim([0, 2*max(y{j})])
 
-%% normal velocity
+
+%% Normal velocity
 figure(12)
 v = U_inf./sqrt(2*U_inf*x*rho/mu).*(eta.*y2-y1);
 % at x = 0.1
