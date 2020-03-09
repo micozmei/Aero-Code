@@ -61,25 +61,8 @@ ylabel('y', 'FontSize', 20);
 ylim([0, max(y{j})])
 grid on
 
-%% Momentum Thickness delta*
+%% Momentum Thickness Theta
 figure(3)
-hold all
-for i = 1:length(x)
-    delta(i) = 1.721*sqrt(x(i))*A;
-end
-plot(x, delta, 'LineWidth', 2, 'color', 'black');
-position = [1 4 5];
-for j = 1:length(position)
-    y{j} = eta*sqrt(position(j))*A;
-end
-title('Momentum Thickness \delta*(x)', 'FontSize', 14);
-xlabel('x', 'FontSize', 20);
-ylabel('y', 'FontSize', 20);
-ylim([0, max(y{j})])
-grid on
-
-%% Displacement Thickness Theta
-figure(4)
 hold all
 for i = 1:length(x)
     delta(i) = 0.664*sqrt(x(i))*A;
@@ -89,7 +72,24 @@ position = [1 4 5];
 for j = 1:length(position)
     y{j} = eta*sqrt(position(j))*A;
 end
-title('Displacement Thickness \theta(x)', 'FontSize', 14);
+title('Momentum Thickness \theta(x)', 'FontSize', 14);
+xlabel('x', 'FontSize', 20);
+ylabel('y', 'FontSize', 20);
+ylim([0, max(y{j})])
+grid on
+
+%% Displacement Thickness delta*
+figure(4)
+hold all
+for i = 1:length(x)
+    delta(i) = 1.721*sqrt(x(i))*A;
+end
+plot(x, delta, 'LineWidth', 2, 'color', 'black');
+position = [1 4 5];
+for j = 1:length(position)
+    y{j} = eta*sqrt(position(j))*A;
+end
+title('Displacement Thickness \delta*(x)', 'FontSize', 14);
 xlabel('x', 'FontSize', 20);
 ylabel('y', 'FontSize', 20);
 ylim([0, max(y{j})])
